@@ -1,17 +1,25 @@
 package com.montaury.mus.jeu.tour.phases;
 
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.carte.Defausse;
 import com.montaury.mus.console.AffichageEvenements;
 import com.montaury.mus.jeu.joueur.InterfaceJoueur;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.Opposants;
+import com.montaury.mus.jeu.tour.phases.dialogue.choix.Hordago;
+import com.montaury.mus.jeu.tour.phases.dialogue.choix.Kanta;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Mintza;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import com.montaury.mus.jeu.tour.phases.dialogue.choix.Paso;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.montaury.mus.jeu.carte.Fixtures.paquetEntierCroissant;
+import static com.montaury.mus.jeu.joueur.Fixtures.unJoueurFaisantChoix;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.mock;
@@ -29,7 +37,15 @@ class MusTest {
     interfaceJoueurZaku = mock(InterfaceJoueur.class);
     joueurEsku = new Joueur("J1", interfaceJoueurEsku);
     joueurZaku = new Joueur("J2", interfaceJoueurZaku);
-    opposants = new Opposants(joueurEsku, joueurZaku);
+    var joueurEquipeEsku = new ArrayList<Joueur>();
+    joueurEquipeEsku.add(joueurEsku);
+    var joueurEquipeZaku = new ArrayList<Joueur>();
+    joueurEquipeZaku.add(joueurZaku);
+
+
+    var equipeEsku = new Equipe("EquipeEsku",joueurEquipeEsku);
+    var equipeZaku = new Equipe("EquipeZaku",joueurEquipeZaku);
+    opposants = new Opposants(equipeEsku, equipeZaku);
   }
 
   @Test

@@ -24,6 +24,7 @@ public class Dialogue {
   }
 
   public final Recapitulatif derouler(Participants participants) {
+
     var deroulement = new Deroulement(participants);
     var choix = new ArrayList<ChoixJoueur>();
     while (!deroulement.estTermine()) {

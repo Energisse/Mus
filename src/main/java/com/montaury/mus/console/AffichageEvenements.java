@@ -34,14 +34,14 @@ public class AffichageEvenements implements Evenements {
 
   @Override
   public void nouveauTour(Opposants opposants) {
-    afficher(opposants.joueurEsku().nom() + " est esku");
+    afficher(opposants.equipeEsku().nom() + " est esku");
   }
 
   @Override
   public void tourTermine(Opposants opposants, Manche.Score score) {
     afficher("Tour terminé");
     opposants.dansLOrdre().forEach(this::afficherMain);
-    score.scoreParJoueur().forEach((key, value) -> afficher("Score " + key.nom() + ": " + value));
+    score.scoreParEquipe().forEach((key, value) -> afficher("Score " + key.nom() + ": " + value));
     sautLigne();
   }
 

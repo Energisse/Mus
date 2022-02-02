@@ -1,33 +1,46 @@
 package com.montaury.mus.jeu;
 
 import com.montaury.mus.jeu.joueur.Joueur;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class Opposants {
-  private Joueur joueurEsku;
-  private Joueur joueurZaku;
+  private Equipe equipeEsku;
+  private Equipe equipeZaku;
 
-  public Opposants(Joueur joueurEsku, Joueur joueurZaku) {
-    this.joueurEsku = joueurEsku;
-    this.joueurZaku = joueurZaku;
+  public Opposants(Equipe equipeEsku, Equipe equipeZaku) {
+    //verifier la taille des equipe
+    this.equipeEsku = equipeEsku;
+    this.equipeZaku = equipeZaku;
   }
 
   public void tourner() {
-    var tmp = joueurEsku;
-    joueurEsku = joueurZaku;
-    joueurZaku = tmp;
+    var tmp = equipeEsku;
+    equipeEsku = equipeZaku;
+    equipeZaku = tmp;
+    for (int indice = 0; indice > equipeEsku.getListejoeurs().size()-1;indice++){
+      var tmpJoueur= equipeEsku.getListejoeurs().get(indice);
+      equipeEsku.getListejoeurs().set(indice,equipeEsku.getListejoeurs().get(indice+1));
+      equipeEsku.getListejoeurs().set(indice+1,tmpJoueur);
+    }
   }
 
-  public Joueur joueurEsku() {
-    return joueurEsku;
+  public Equipe equipeEsku() {
+    return equipeEsku;
   }
 
-  public Joueur joueurZaku() {
-    return joueurZaku;
+  public Equipe equipeZaku() {
+    return equipeZaku;
   }
 
   public List<Joueur> dansLOrdre() {
-    return List.of(joueurEsku, joueurZaku);
+    List<Joueur> listJoueur = new ArrayList<Joueur>();
+    for (int indice = 0; indice < equipeEsku.getListejoeurs().size(); indice++) {
+      listJoueur.add(equipeEsku.getListejoeurs().get(indice));
+      listJoueur.add(equipeZaku.getListejoeurs().get(indice));
+    }
+    return listJoueur;
   }
 }
