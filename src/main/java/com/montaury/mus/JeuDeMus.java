@@ -13,8 +13,8 @@ public class JeuDeMus {
     var nomJoueur = new Scanner(System.in).next();
     var joueurHumain = Joueur.humain(nomJoueur);
 
-    var equipeHumain = new Equipe(joueurHumain, Joueur.ordinateur("Co-equipier Bruno"));
-    var equipeOrdinateurs = new Equipe(Joueur.ordinateur("Opposant Pedro"), Joueur.ordinateur("Opposant Alex"));
+    var equipeHumain = new Equipe(joueurHumain, Joueur.ordinateur("Co-equipier Bruno"),"Equipe Humain");
+    var equipeOrdinateurs = new Equipe(Joueur.ordinateur("Opposant Pedro"), Joueur.ordinateur("Opposant Alex"),"Equipe Ordi");
 
     var partie = new Partie(new AffichageEvenements(joueurHumain));
     var resultat = partie.jouer(new Opposants(equipeHumain, equipeOrdinateurs));
