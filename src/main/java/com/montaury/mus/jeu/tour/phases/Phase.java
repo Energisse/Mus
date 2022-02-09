@@ -2,6 +2,7 @@ package com.montaury.mus.jeu.tour.phases;
 
 import com.montaury.mus.jeu.Manche;
 import com.montaury.mus.jeu.evenements.Evenements;
+import com.montaury.mus.jeu.joueur.Equipe;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.joueur.Main;
 import com.montaury.mus.jeu.Opposants;
@@ -84,21 +85,21 @@ public abstract class Phase {
       return new Resultat(null, 0, 0);
     }
 
-    public static Resultat termine(Joueur vainqueur, int pointsImmediats, int pointsFinDuTour) {
+    public static Resultat termine(Equipe vainqueur, int pointsImmediats, int pointsFinDuTour) {
       return new Resultat(vainqueur, pointsImmediats, pointsFinDuTour);
     }
 
-    private final Joueur vainqueur;
+    private final Equipe vainqueur;
     public final int pointsImmediats;
     public final int pointsFinDuTour;
 
-    private Resultat(Joueur vainqueur, int pointsImmediats, int pointsFinDuTour) {
+    private Resultat(Equipe vainqueur, int pointsImmediats, int pointsFinDuTour) {
       this.pointsImmediats = pointsImmediats;
       this.vainqueur = vainqueur;
       this.pointsFinDuTour = pointsFinDuTour;
     }
 
-    public Optional<Joueur> vainqueur() {
+    public Optional<Equipe> vainqueur() {
       return Optional.ofNullable(vainqueur);
     }
   }
