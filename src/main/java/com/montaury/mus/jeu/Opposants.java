@@ -21,8 +21,6 @@ public class Opposants {
   public void tourner() {
     Joueur zakuToEsku = joueursOrdre.pollLast();    //  ZAKU
     joueursOrdre.addFirst(zakuToEsku);
-
-
   }
 
   public Joueur joueurEsku() {
