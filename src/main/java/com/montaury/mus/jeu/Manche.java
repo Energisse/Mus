@@ -31,8 +31,9 @@ public class Manche {
     private final Map<Equipe, Integer> scoreParEquipe = new HashMap<>();
 
     public Score(Opposants opposants) {
-      scoreParEquipe.put(opposants.equipeEsku(), 0);
-      scoreParEquipe.put(opposants.equipeZaku(), 0);
+      for (Equipe equipe : opposants.getListeEquipe()) {
+        scoreParEquipe.put(equipe, 0);
+      }
     }
 
     public Map<Equipe, Integer> scoreParEquipe() {

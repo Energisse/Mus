@@ -4,43 +4,53 @@ import com.montaury.mus.jeu.joueur.Joueur;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Opposants {
-  private Equipe equipeEsku;
-  private Equipe equipeZaku;
+
+  private Joueur joueurEsku;
+  private Joueur joueurZaku;
+  private List<Equipe> listeEquipe;
+  private LinkedList<Joueur> listeJoueur;
 
   public Opposants(Equipe equipeEsku, Equipe equipeZaku) {
-    //verifier la taille des equipe
-    this.equipeEsku = equipeEsku;
-    this.equipeZaku = equipeZaku;
+    this.listeEquipe = new ArrayList<>();
+    this.listeJoueur = new LinkedList<>();
+
+    this.listeEquipe.add(equipeEsku);
+    this.listeEquipe.add(equipeZaku);
+
+    this.joueurEsku = equipeEsku.getListejoeurs().get(0);
+    this.joueurZaku = equipeZaku.getListejoeurs().get(equipeZaku.getListejoeurs().size()-1);
+
+    for (int indice = 0; indice < equipeEsku.getListejoeurs().size(); indice++) {
+      this.listeJoueur.add(equipeEsku.getListejoeurs().get(indice));
+      this.listeJoueur.add(equipeZaku.getListejoeurs().get(indice));
+    }
   }
 
   public void tourner() {
-    var tmp = equipeEsku;
-    equipeEsku = equipeZaku;
-    equipeZaku = tmp;
-    for (int indice = 0; indice > equipeEsku.getListejoeurs().size()-1;indice++){
-      var tmpJoueur= equipeEsku.getListejoeurs().get(indice);
-      equipeEsku.getListejoeurs().set(indice,equipeEsku.getListejoeurs().get(indice+1));
-      equipeEsku.getListejoeurs().set(indice+1,tmpJoueur);
-    }
+    Joueur tmp = this.listeJoueur.removeFirst();
+    this.listeJoueur.addLast(tmp);
+
+    this.joueurEsku = this.listeJoueur.getFirst();
+    this.joueurZaku = this.listeJoueur.getLast();
   }
 
-  public Equipe equipeEsku() {
-    return equipeEsku;
+  public Joueur joueurEsku() {
+    return joueurEsku;
   }
 
-  public Equipe equipeZaku() {
-    return equipeZaku;
+  public Joueur joueurZaku() {
+    return joueurZaku;
   }
 
   public List<Joueur> dansLOrdre() {
-    List<Joueur> listJoueur = new ArrayList<Joueur>();
-    for (int indice = 0; indice < equipeEsku.getListejoeurs().size(); indice++) {
-      listJoueur.add(equipeEsku.getListejoeurs().get(indice));
-      listJoueur.add(equipeZaku.getListejoeurs().get(indice));
-    }
-    return listJoueur;
+    return this.listeJoueur;
+  }
+
+  public List<Equipe> getListeEquipe() {
+    return this.listeEquipe;
   }
 }

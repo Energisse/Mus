@@ -34,8 +34,9 @@ public class Partie {
     private final Map<Equipe, Integer> manchesGagneesParEquipe = new HashMap<>();
 
     public Score(Opposants opposants) {
-      this.manchesGagneesParEquipe.put(opposants.equipeEsku(), 0);
-      this.manchesGagneesParEquipe.put(opposants.equipeZaku(), 0);
+      for (Equipe equipe : opposants.getListeEquipe()) {
+        this.manchesGagneesParEquipe.put(equipe, 0);
+      }
     }
 
     public Optional<Equipe> enregistrer(Manche.Resultat score) {

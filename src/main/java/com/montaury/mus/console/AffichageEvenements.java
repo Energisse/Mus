@@ -34,7 +34,7 @@ public class AffichageEvenements implements Evenements {
 
   @Override
   public void nouveauTour(Opposants opposants) {
-    afficher(opposants.equipeEsku().nom() + " est esku");
+    afficher(opposants.joueurEsku().nom() + " est esku");
   }
 
   @Override
