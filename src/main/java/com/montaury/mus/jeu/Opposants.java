@@ -14,6 +14,9 @@ public class Opposants {
   private List<Equipe> listeEquipe;
   private LinkedList<Joueur> listeJoueur;
 
+  public Opposants(Joueur joueurEsku, Joueur joueurZaku) {
+     this(new Equipe("Equipe1",List.of(joueurEsku)),new Equipe("Equipe1",List.of(joueurZaku)));
+  }
   public Opposants(Equipe equipeEsku, Equipe equipeZaku) {
     this.listeEquipe = new ArrayList<>();
     this.listeJoueur = new LinkedList<>();
