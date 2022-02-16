@@ -1,10 +1,12 @@
 package com.montaury.mus.jeu.tour;
 
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.Manche;
 import com.montaury.mus.jeu.Opposants;
 import com.montaury.mus.jeu.carte.Carte;
 import com.montaury.mus.jeu.carte.Defausse;
 import com.montaury.mus.jeu.evenements.Evenements;
+import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Gehiago;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Hordago;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Idoki;
@@ -15,6 +17,9 @@ import com.montaury.mus.jeu.tour.phases.dialogue.choix.Paso;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Tira;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.montaury.mus.jeu.carte.Fixtures.paquetAvec;
 import static com.montaury.mus.jeu.carte.Fixtures.paquetEntierCroissant;
@@ -100,6 +105,8 @@ class TourTest {
     assertThat(score.scoreParEquipe()).containsEntry(joueurZaku.getEquipe(), 16);
   }
 
+
+
   @Test
   void devrait_privilegier_le_joueur_esku_si_les_mains_sont_identiques() {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
@@ -130,6 +137,43 @@ class TourTest {
     assertThat(score.vainqueur()).isEmpty();
     assertThat(score.scoreParEquipe()).containsEntry(joueurEsku.getEquipe(), 6);
     assertThat(score.scoreParEquipe()).containsEntry(joueurZaku.getEquipe(), 0);
+  }
+
+  @Test
+  void devrait_effecuter_la_rotation_entre_tous_les_joueurs() {
+
+    String nomJoueur="Martin";
+    var joueurHumain = Joueur.humain(nomJoueur);
+
+
+    String nomEquipe="Les bests";
+
+    List<Joueur> listeJoueurEquipe1 = new ArrayList<Joueur>();
+    listeJoueurEquipe1.add(joueurHumain);
+    listeJoueurEquipe1.add(Joueur.ordinateur("Ordinateur3"));
+    var equipe1 = new Equipe(nomEquipe,listeJoueurEquipe1);
+
+    List<Joueur> listeJoueurEquipe2 = new ArrayList<Joueur>();
+    listeJoueurEquipe2.add(Joueur.ordinateur("Ordinateur1"));
+    listeJoueurEquipe2.add(Joueur.ordinateur("Ordinateur2"));
+    var equipe2 = new Equipe("Equipe Ordinateur",listeJoueurEquipe2);
+
+    var opposants = new Opposants(equipe1,equipe2);
+
+
+
+    var JoueurTest1 = opposants.joueurEsku();
+    var JoueurTest2 = opposants.dansLOrdre().get(1);
+    var JoueurTest3 = opposants.dansLOrdre().get(2);
+    var JoueurTest4 = opposants.joueurZaku();
+
+    opposants.tourner();
+
+    assertThat(JoueurTest1).isEqualTo(opposants.joueurZaku());
+    assertThat(JoueurTest2).isEqualTo(opposants.joueurEsku());
+    assertThat(JoueurTest3).isEqualTo(opposants.dansLOrdre().get(1));
+    assertThat(JoueurTest4).isEqualTo(opposants.dansLOrdre().get(2));
+
   }
 
   private Evenements evenementsDeJeu;
