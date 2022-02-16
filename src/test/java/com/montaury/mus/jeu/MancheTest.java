@@ -39,7 +39,7 @@ class MancheTest {
 
     var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
 
-    assertThat(resultat.vainqueur()).isEqualTo(joueurEsku);
+    assertThat(resultat.vainqueur()).isEqualTo(joueurEsku.getEquipe());
     assertThat(resultat.pointsVaincu()).isZero();
   }
 
