@@ -26,8 +26,8 @@ public class JeuDeMus {
     var equipe1 = new Equipe(nomEquipe,listeJoueurEquipe1);
 
     List<Joueur> listeJoueurEquipe2 = new ArrayList<Joueur>();
-    listeJoueurEquipe2.add(Joueur.ordinateur());
-    listeJoueurEquipe2.add(Joueur.ordinateur());
+    listeJoueurEquipe2.add(Joueur.ordinateur("Ordinateur1"));
+    listeJoueurEquipe2.add(Joueur.ordinateur("Ordinateur2"));
     var equipe2 = new Equipe("Equipe Ordinateur",listeJoueurEquipe2);
 
     var resultat = partie.jouer(new Opposants(equipe1, equipe2));

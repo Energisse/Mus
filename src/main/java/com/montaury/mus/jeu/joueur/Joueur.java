@@ -10,6 +10,10 @@ public class Joueur {
     return new Joueur(nom, new InterfaceJoueurHumain());
   }
 
+  public static Joueur ordinateur(String nom) {
+    return new Joueur(nom, new InterfaceJoueurOrdinateur());
+  }
+
   public static Joueur ordinateur() {
     return new Joueur("Ordinateur", new InterfaceJoueurOrdinateur());
   }
@@ -35,6 +39,10 @@ public class Joueur {
 
   public String nom() {
     return nom;
+  }
+
+  public String nomEtEquipe() {
+    return "["+equipe.nom()+"]" +nom;
   }
 
   public Main main() {

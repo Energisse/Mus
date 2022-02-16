@@ -34,7 +34,7 @@ public class AffichageEvenements implements Evenements {
 
   @Override
   public void nouveauTour(Opposants opposants) {
-    afficher(opposants.joueurEsku().nom() + " est esku");
+    afficher(opposants.joueurEsku().nomEtEquipe() + " est esku");
   }
 
   @Override
@@ -47,7 +47,7 @@ public class AffichageEvenements implements Evenements {
 
   @Override
   public void choixFait(Joueur joueur, Choix choix) {
-    afficher(joueur.nom() + ": " + description(choix));
+    afficher(joueur.nomEtEquipe() + ": " + description(choix));
   }
 
   private static String description(Choix choix) {
@@ -64,7 +64,7 @@ public class AffichageEvenements implements Evenements {
   }
 
   private void afficherMain(Joueur joueur) {
-    afficher(joueur.nom() + ": " + joueur.main().cartesDuPlusGrandAuPlusPetit().stream().map(carte -> carte.valeur() + " " + carte.type()).collect(Collectors.joining(" | ")));
+    afficher(joueur.nomEtEquipe() + ": " + joueur.main().cartesDuPlusGrandAuPlusPetit().stream().map(carte -> carte.valeur() + " " + carte.type()).collect(Collectors.joining(" | ")));
   }
 
   @Override
