@@ -87,7 +87,7 @@ public class Dialogue {
     }
 
     public Deroulement basculerSurAdversaire(List<TypeChoix> prochainsChoixPossibles) {
-      joueursDevantParler = Collections.singletonList(participants.adversaireDe(joueurParlant)).iterator();
+      this.joueursDevantParler = Collections.singletonList(participants.adversaireDe(joueurParlant)).iterator();
       this.prochainsChoixPossibles = prochainsChoixPossibles;
       return this;
     }
