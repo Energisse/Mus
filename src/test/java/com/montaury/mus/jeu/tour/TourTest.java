@@ -174,6 +174,26 @@ class TourTest {
     assertThat(JoueurTest3).isEqualTo(opposants.dansLOrdre().get(1));
     assertThat(JoueurTest4).isEqualTo(opposants.dansLOrdre().get(2));
 
+    opposants.tourner();
+
+    assertThat(JoueurTest1).isEqualTo(opposants.dansLOrdre().get(2));
+    assertThat(JoueurTest2).isEqualTo(opposants.joueurZaku());
+    assertThat(JoueurTest3).isEqualTo(opposants.joueurEsku());
+    assertThat(JoueurTest4).isEqualTo(opposants.dansLOrdre().get(1));
+
+    opposants.tourner();
+
+    assertThat(JoueurTest1).isEqualTo(opposants.dansLOrdre().get(1));
+    assertThat(JoueurTest2).isEqualTo(opposants.dansLOrdre().get(2));
+    assertThat(JoueurTest3).isEqualTo(opposants.joueurZaku());
+    assertThat(JoueurTest4).isEqualTo(opposants.joueurEsku());
+
+    opposants.tourner();
+
+    assertThat(JoueurTest1).isEqualTo(opposants.joueurEsku());
+    assertThat(JoueurTest2).isEqualTo(opposants.dansLOrdre().get(1));
+    assertThat(JoueurTest3).isEqualTo(opposants.dansLOrdre().get(2));
+    assertThat(JoueurTest4).isEqualTo(opposants.joueurZaku());
   }
 
   private Evenements evenementsDeJeu;
