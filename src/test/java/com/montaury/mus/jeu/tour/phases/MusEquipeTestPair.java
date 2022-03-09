@@ -36,7 +36,7 @@ public class MusEquipeTestPair {
     }
 
     @Test
-    void joueur1et2_devrait_pas_jouer_si_na_pas_de_paires() {
+    void joueur1et2_devrait_pas_jouer_sans_paires_et_lequipe1_devrait_gagner() {
         when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Paso());
         when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Paso());
         when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Paso());
@@ -55,10 +55,12 @@ public class MusEquipeTestPair {
         verify(interfaceJoueur2, times(0)).faireChoixParmi(anyList());
         verify(interfaceJoueur3, times(1)).faireChoixParmi(anyList());
         verify(interfaceJoueur4, times(1)).faireChoixParmi(anyList());
+
+        assertThat(resultat.vainqueur().get()).isEqualTo(joueur1.getEquipe());
     }
 
     @Test
-    void joueur3et4_devrait_pas_jouer_si_na_pas_de_paires() {
+    void joueur3et4_devrait_pas_jouer_si_na_pas_de_paires_et_lequipe2_devrait_gagner() {
         when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Paso());
         when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Paso());
         when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Paso());
@@ -77,6 +79,9 @@ public class MusEquipeTestPair {
         verify(interfaceJoueur2, times(1)).faireChoixParmi(anyList());
         verify(interfaceJoueur3, times(0)).faireChoixParmi(anyList());
         verify(interfaceJoueur4, times(0)).faireChoixParmi(anyList());
+
+        assertThat(resultat.vainqueur().get()).isEqualTo(joueur2.getEquipe());
+
     }
 
 
