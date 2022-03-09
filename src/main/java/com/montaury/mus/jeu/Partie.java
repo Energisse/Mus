@@ -21,8 +21,9 @@ public class Partie {
     Optional<Equipe> vainqueur;
     do {
       var resultat = new Manche(affichage).jouer(opposants);
+
       vainqueur = score.enregistrer(resultat);
-      affichage.mancheTerminee(score);
+      System.out.println(vainqueur.isEmpty());
     } while (vainqueur.isEmpty());
     return new Resultat(vainqueur.get(), score);
   }
@@ -50,8 +51,9 @@ public class Partie {
     }
 
     public Optional<Equipe> vainqueur() {
+
       return manchesGagneesParEquipe.keySet().stream()
-        .filter(joueur -> manchesGagneesParEquipe.get(joueur) == NB_MANCHES_A_GAGNER).findAny();
+        .filter(equipe -> manchesGagneesParEquipe.get(equipe) == NB_MANCHES_A_GAGNER).findAny();
     }
   }
 

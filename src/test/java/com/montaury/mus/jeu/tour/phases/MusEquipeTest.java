@@ -41,10 +41,11 @@ public class MusEquipeTest {
     }
 
     @Test
-    void joueur2_devrait_pas_jouer_apres_mintza() {
+    void joueur3_devrait_pas_jouer_apres_mintza() {
         when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Mintza());
-        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
         when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
+
+        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
         when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
 
         mus.jouer(opposants);
@@ -56,31 +57,33 @@ public class MusEquipeTest {
     }
 
     @Test
-    void joueur3_devrait_pas_jouer_apres_mintza() {
+    void joueur4_devrait_pas_jouer_apres_mintza() {
         when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
-        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Mintza());
         when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
+
+        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Mintza());
         when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
 
         mus.jouer(opposants);
 
         verify(interfaceJoueur1, times(1)).faireChoixParmi(anyList());
         verify(interfaceJoueur2, times(1)).faireChoixParmi(anyList());
-        verify(interfaceJoueur3, times(0)).faireChoixParmi(anyList());
+        verify(interfaceJoueur3, times(1)).faireChoixParmi(anyList());
         verify(interfaceJoueur4, times(0)).faireChoixParmi(anyList());
     }
 
     @Test
-    void joueur4_devrait_pas_jouer_apres_mintza() {
+    void joueur4et2_devrait_pas_jouer_apres_mintza() {
         when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
-        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
         when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Mintza());
+
+        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
         when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new com.montaury.mus.jeu.tour.phases.dialogue.choix.Mus());
 
         mus.jouer(opposants);
 
         verify(interfaceJoueur1, times(1)).faireChoixParmi(anyList());
-        verify(interfaceJoueur2, times(1)).faireChoixParmi(anyList());
+        verify(interfaceJoueur2, times(0)).faireChoixParmi(anyList());
         verify(interfaceJoueur3, times(1)).faireChoixParmi(anyList());
         verify(interfaceJoueur4, times(0)).faireChoixParmi(anyList());
     }

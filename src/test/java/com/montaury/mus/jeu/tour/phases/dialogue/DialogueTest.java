@@ -1,5 +1,6 @@
 package com.montaury.mus.jeu.tour.phases.dialogue;
 
+import com.montaury.mus.jeu.Opposants;
 import com.montaury.mus.jeu.evenements.Evenements;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.Participants;
@@ -39,7 +40,7 @@ class DialogueTest {
     Joueur joueur1 = unJoueurFaisantChoix(new Paso(), new Tira());
     Joueur joueur2 = unJoueurFaisantChoix(new Imido());
 
-    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueur1, joueur2)));
+    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(new Opposants(joueur1, joueur2).dansLOrdre()));
 
     assertThat(recapitulatif.pointsEngages()).isOne();
   }
@@ -49,7 +50,7 @@ class DialogueTest {
     Joueur joueur1 = unJoueurFaisantChoix(new Paso(), new Idoki());
     Joueur joueur2 = unJoueurFaisantChoix(new Imido());
 
-    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueur1, joueur2)));
+    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(new Opposants(joueur1, joueur2).dansLOrdre()));
 
     assertThat(recapitulatif.pointsEngages()).isEqualTo(2);
   }
@@ -59,7 +60,7 @@ class DialogueTest {
     Joueur joueur1 = unJoueurFaisantChoix(new Paso(), new Kanta());
     Joueur joueur2 = unJoueurFaisantChoix(new Hordago());
 
-    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(List.of(joueur1, joueur2)));
+    Dialogue.Recapitulatif recapitulatif = dialogue.derouler(new Participants(new Opposants(joueur1, joueur2).dansLOrdre()));
 
     assertThat(recapitulatif.pointsEngages()).isEqualTo(40);
   }

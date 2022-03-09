@@ -25,15 +25,15 @@ public class Participants {
     return dansLOrdre.get(0);
   }
 
-  public Joueur adversaireDe(Joueur joueurParlant) {
-    Joueur JoueurDevantParler = null;
+  public List<Joueur> adversairesDe(Joueur joueurParlant) {
+    List<Joueur> joueursDevantParler = new ArrayList<Joueur>();
     for( Joueur joueur: dansLOrdre()){
       if(joueur.getEquipe() != joueurParlant.getEquipe()){
-        JoueurDevantParler = joueur;
-        break;
+        joueursDevantParler.add((joueur));
       }
     }
-    return JoueurDevantParler;
+
+    return joueursDevantParler;
   }
 
   public Iterable<Joueur> dansLOrdre() {

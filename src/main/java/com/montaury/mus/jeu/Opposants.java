@@ -15,7 +15,7 @@ public class Opposants {
   private LinkedList<Joueur> listeJoueur;
 
   public Opposants(Joueur joueurEsku, Joueur joueurZaku) {
-     this(new Equipe("Equipe1",List.of(joueurEsku)),new Equipe("Equipe1",List.of(joueurZaku)));
+     this(new Equipe("Equipe1",List.of(joueurEsku)),new Equipe("Equipe2",List.of(joueurZaku)));
   }
   public Opposants(Equipe equipeEsku, Equipe equipeZaku) {
     this.listeEquipe = new ArrayList<>();
@@ -39,6 +39,10 @@ public class Opposants {
 
     this.joueurEsku = this.listeJoueur.getFirst();
     this.joueurZaku = this.listeJoueur.getLast();
+
+    var tmpEquipe = this.listeEquipe.get(0);
+    this.listeEquipe.set(0,this.listeEquipe.get(1));
+    this.listeEquipe.set(1,tmpEquipe);
   }
 
   public Joueur joueurEsku() {
@@ -56,5 +60,7 @@ public class Opposants {
   public List<Equipe> getListeEquipe() {
     return this.listeEquipe;
   }
+
+
 }
 

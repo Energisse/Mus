@@ -1,5 +1,6 @@
 package com.montaury.mus.jeu.tour.phases;
 
+import com.montaury.mus.jeu.Equipe;
 import com.montaury.mus.jeu.Opposants;
 import com.montaury.mus.jeu.carte.Defausse;
 import com.montaury.mus.jeu.carte.Paquet;
@@ -7,6 +8,7 @@ import com.montaury.mus.jeu.evenements.Evenements;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.TypeChoix;
 import java.util.List;
+import java.util.*;
 
 import static com.montaury.mus.jeu.tour.phases.dialogue.choix.TypeChoix.MINTZA;
 
@@ -24,7 +26,13 @@ public class Mus {
   }
 
   public void jouer(Opposants opposants) {
-    var joueursDansLOrdre = opposants.dansLOrdre();
+    List<Joueur> joueursDansLOrdre = new ArrayList<Joueur>();
+    for(Equipe equipe : opposants.getListeEquipe()){
+      for(Joueur joueur : equipe.getListejoeurs()){
+        joueursDansLOrdre.add(joueur);
+      }
+    }
+
     joueursDansLOrdre.forEach(joueur -> joueur.main().jeterTout());
 
     while (true) {
