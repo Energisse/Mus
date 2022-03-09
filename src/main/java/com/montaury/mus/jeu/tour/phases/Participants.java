@@ -1,6 +1,8 @@
 package com.montaury.mus.jeu.tour.phases;
 
 import com.montaury.mus.jeu.joueur.Joueur;
+
+import javax.print.event.PrintJobEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,14 @@ public class Participants {
   }
 
   public Joueur adversaireDe(Joueur joueurParlant) {
-    return joueurParlant == premier() ? dansLOrdre.get(1) : premier();
+    Joueur JoueurDevantParler = null;
+    for( Joueur joueur: dansLOrdre()){
+      if(joueur.getEquipe() != joueurParlant.getEquipe()){
+        JoueurDevantParler = joueur;
+        break;
+      }
+    }
+    return JoueurDevantParler;
   }
 
   public Iterable<Joueur> dansLOrdre() {
