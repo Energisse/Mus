@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class InterfaceJoueurOrdinateur implements InterfaceJoueur {
-  private final Map<TypeChoix, Choix> choixPreetablis = Map.of(
+  public final Map<TypeChoix, Choix> choixPreetablis = Map.of(
     TypeChoix.MUS, new Mus(),
     TypeChoix.MINTZA, new Mintza(),
     TypeChoix.IMIDO, new Imido(),
@@ -27,8 +27,8 @@ public class InterfaceJoueurOrdinateur implements InterfaceJoueur {
     TypeChoix.GEHIAGO, new Gehiago(),
     TypeChoix.KANTA, new Kanta()
   );
-  private Main main;
-  private final Random random = new Random();
+  public Main main;
+  public final Random random = new Random();
 
   @Override
   public void nouvelleMain(Main main) {
