@@ -42,58 +42,58 @@ public class MusEquipeTestGrand {
         opposants = new Opposants(equipe1, equipe2);
     }
 
-//    @Test
-//    void joueur3et4_devrait_pas_jouer_apres_que_hordago_et_kanta_et_lequipe2_devrait_gagner() {
-//        when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Hordago());
-//        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Kanta());
-//        when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Paso());
-//        when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new Paso());
-//
-//        Phase.Resultat resultat = grand.jouer(new AffichageEvenements(joueur1),opposants);
-//
-//        verify(interfaceJoueur1, times(1)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur2, times(1)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur3, times(0)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur4, times(0)).faireChoixParmi(anyList());
-//
-//        assertThat(resultat.vainqueur().get()).isEqualTo(joueur2.getEquipe());
-//    }
-//
-//    @Test
-//    void joueur3et4_devrait_pas_jouer_apres_que_hordago_et_tira_et_lequipe1_devrait_gaganer() {
-//        when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Hordago());
-//        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Tira());
-//        when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Paso());
-//        when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new Paso());
-//
-//        Phase.Resultat resultat = grand.jouer(new AffichageEvenements(joueur1),opposants);
-//
-//        verify(interfaceJoueur1, times(1)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur2, times(1)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur3, times(0)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur4, times(0)).faireChoixParmi(anyList());
-//
-//        assertThat(resultat.vainqueur().get()).isEqualTo(joueur1.getEquipe());
-//    }
-//
-//    @Test
-//    void joueur2_3_et_4_devrait_pas_jouer_2fois_apres_Gehiago_et_Tira_et_lequipe2_devrait_gagner_apres_tira() {
-//        when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Imido(),new Tira());
-//        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Gehiago());
-//        when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Gehiago());
-//        when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new Gehiago());
-//        Phase.Resultat resultat = grand.jouer(new AffichageEvenements(joueur1),opposants);
-//
-//        verify(interfaceJoueur1, times(2)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur2, times(1)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur3, times(0)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur4, times(0)).faireChoixParmi(anyList());
-//
-//        assertThat(resultat.vainqueur().get()).isEqualTo(joueur2.getEquipe());
-//    }
+    @Test
+    void joueur3et4_devrait_pas_jouer_apres_que_hordago_et_kanta_et_lequipe2_devrait_gagner() {
+        when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Hordago());
+        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Kanta());
+        when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Paso());
+        when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new Paso());
+
+        Phase.Resultat resultat = grand.jouer(new AffichageEvenements(joueur1),opposants);
+
+        verify(interfaceJoueur1, times(1)).faireChoixParmi(anyList());
+        verify(interfaceJoueur2, times(1)).faireChoixParmi(anyList());
+        verify(interfaceJoueur3, times(0)).faireChoixParmi(anyList());
+        verify(interfaceJoueur4, times(0)).faireChoixParmi(anyList());
+
+        assertThat(resultat.vainqueur().get()).isEqualTo(joueur2.getEquipe());
+    }
 
     @Test
-    void test() {
+    void joueur3_devrait_pas_jouer_apres_que_hordago_et_kanta_et_lequipe2_devrait_gaganer() {
+        when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Hordago());
+        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Tira());
+        when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Paso());
+        when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new Kanta());
+
+        Phase.Resultat resultat = grand.jouer(new AffichageEvenements(joueur1),opposants);
+
+        verify(interfaceJoueur1, times(1)).faireChoixParmi(anyList());
+        verify(interfaceJoueur2, times(1)).faireChoixParmi(anyList());
+        verify(interfaceJoueur3, times(0)).faireChoixParmi(anyList());
+        verify(interfaceJoueur4, times(1)).faireChoixParmi(anyList());
+
+        assertThat(resultat.vainqueur().get()).isEqualTo(joueur2.getEquipe());
+    }
+
+    @Test
+    void lequipe2_devrait_gagner_apres_que_lequipe1_ait_tira() {
+        when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Imido(),new Tira());
+        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Gehiago(),new Tira());
+        when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Gehiago());
+        when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new Gehiago(),new Tira());
+        Phase.Resultat resultat = grand.jouer(new AffichageEvenements(joueur1),opposants);
+
+        verify(interfaceJoueur1, times(2)).faireChoixParmi(anyList());
+        verify(interfaceJoueur2, times(2)).faireChoixParmi(anyList());
+        verify(interfaceJoueur3, times(2)).faireChoixParmi(anyList());
+        verify(interfaceJoueur4, times(2)).faireChoixParmi(anyList());
+
+        assertThat(resultat.vainqueur().get()).isEqualTo(joueur1.getEquipe());
+    }
+
+    @Test
+    void joueur4_devrait_pas_jouer_et_lequipe2_devrait_gagner_apres_que_lequipe1_ait_tira() {
         when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Paso(),new Tira());
         when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Imido());
         when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Tira());

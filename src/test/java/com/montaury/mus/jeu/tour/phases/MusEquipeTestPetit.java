@@ -73,22 +73,7 @@ public class MusEquipeTestPetit {
         assertThat(resultat.vainqueur().get()).isEqualTo(joueur2.getEquipe());
     }
 
-//    @Test
-//    void joueur3et4_devrait_pas_jouer_apres_que_hordago_et_kanta_et_lequipe2_devrait_gagner3() {
-//        when(interfaceJoueur1.faireChoixParmi(anyList())).thenReturn(new Tira());
-//        when(interfaceJoueur2.faireChoixParmi(anyList())).thenReturn(new Paso(),new Tira());
-//        when(interfaceJoueur3.faireChoixParmi(anyList())).thenReturn(new Hordago());
-//        when(interfaceJoueur4.faireChoixParmi(anyList())).thenReturn(new Paso());
-//
-//        Phase.Resultat resultat = petit.jouer(new AffichageEvenements(joueur1),opposants);
-//
-//        verify(interfaceJoueur1, times(1)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur2, times(2)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur3, times(1)).faireChoixParmi(anyList());
-//        verify(interfaceJoueur4, times(0)).faireChoixParmi(anyList());
-//
-//        assertThat(resultat.vainqueur().get()).isEqualTo(joueur3.getEquipe());
-//    }
+
 
     private final Petit petit = new Petit();
     private InterfaceJoueur interfaceJoueur1;
