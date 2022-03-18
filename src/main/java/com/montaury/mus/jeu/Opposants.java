@@ -3,7 +3,6 @@ package com.montaury.mus.jeu;
 import com.montaury.mus.jeu.joueur.Joueur;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,12 +23,12 @@ public class Opposants {
     this.listeEquipe.add(equipeEsku);
     this.listeEquipe.add(equipeZaku);
 
-    this.joueurEsku = equipeEsku.getListejoeurs().get(0);
-    this.joueurZaku = equipeZaku.getListejoeurs().get(equipeZaku.getListejoeurs().size()-1);
+    this.joueurEsku = equipeEsku.getListejoueurs().get(0);
+    this.joueurZaku = equipeZaku.getListejoueurs().get(equipeZaku.getListejoueurs().size()-1);
 
-    for (int indice = 0; indice < equipeEsku.getListejoeurs().size(); indice++) {
-      this.listeJoueur.add(equipeEsku.getListejoeurs().get(indice));
-      this.listeJoueur.add(equipeZaku.getListejoeurs().get(indice));
+    for (int indice = 0; indice < equipeEsku.getListejoueurs().size(); indice++) {
+      this.listeJoueur.add(equipeEsku.getListejoueurs().get(indice));
+      this.listeJoueur.add(equipeZaku.getListejoueurs().get(indice));
     }
   }
 

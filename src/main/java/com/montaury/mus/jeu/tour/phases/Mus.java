@@ -28,7 +28,7 @@ public class Mus {
   public void jouer(Opposants opposants) {
     List<Joueur> joueursDansLOrdre = new ArrayList<Joueur>();
     for(Equipe equipe : opposants.getListeEquipe()){
-      for(Joueur joueur : equipe.getListejoeurs()){
+      for(Joueur joueur : equipe.getListejoueurs()){
         joueursDansLOrdre.add(joueur);
       }
     }
